@@ -2,5 +2,5 @@
     Agregar variables globales
 """
 
-usuario = "r"
-clave = "reroes"
+user = "oliver2002"
+password = "123"
