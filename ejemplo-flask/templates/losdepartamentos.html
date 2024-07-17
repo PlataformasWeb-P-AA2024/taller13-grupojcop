@@ -3,19 +3,24 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Teléfonos - 1</title>
+    <title>Departamentos</title>
   </head>
   <body>
-    <h5>Listado de departamentos - {{numero}}</h5>
+    <h5>Listado de departamentos - {{numero_departamentos}}</h5>
+    <a href="{{ url_for('index') }}">[Inicio]</a>
+    <a href="{{ url_for('crear_departamento') }}">[Crear]</a>
 
     {% for e in departamentos %}
 
-    <ol>
+    <ul>
       <li><b>Nombre Completo Propietario: </b>{{e['nombre_completo_propietario']}}</li>
       <li><b>Costo Departamento: </b>{{e['costo_departamento']}}</li>
       <li><b>Número Cuartos: </b>{{e['numero_cuartos']}}</li>
       <li><b>Edificio: </b>{{e['edificio']}}</li>
-    </ol>
+      <li><a href="{{ url_for('editar_departamento', id=e['id']) }}">[Editar]</a>
+        <a href="{{ url_for('eliminar_departamento', id=e['id']) }}" onclick="return confirm('¿Está seguro de la eliminación?')">[Eliminar]</a>
+      </li>
+    </ul>
     <hr>
     {% endfor%}
   </body>

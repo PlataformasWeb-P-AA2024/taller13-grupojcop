@@ -3,20 +3,24 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Demo</title>
+    <title>Edificios</title>
   </head>
   <body>
-    <h5>Listado de edificios - {{numero_edificios}}</h5>
+    <h5>Listado de edificios - {{ numero_edificios }}</h5>
+    <a href="{{ url_for('index') }}">[Inicio]</a>
+    <a href="{{ url_for('crear_edificio') }}">[Crear]</a>
 
     {% for e in edificios %}
-
-    <ol>
-      <li><b>Nombre: </b>{{e['nombre']}}</li>
-      <li><b>Dirección: </b>{{e['direccion']}}</li>
-      <li><b>Ciudad: </b>{{e['ciudad']}}</li>
-      <li><b>Tipo: </b>{{e['tipo']}}</li>
-    </ol>
+    <ul>
+      <li><b>Nombre: </b>{{ e['nombre'] }}</li>
+      <li><b>Dirección: </b>{{ e['direccion'] }}</li>
+      <li><b>Ciudad: </b>{{ e['ciudad'] }}</li>
+      <li><b>Tipo: </b>{{ e['tipo'] }}</li>
+      <li><a href="{{ url_for('editar_edificio', id=e['id']) }}">[Editar]</a>
+        <a href="{{ url_for('eliminar_edificio', id=e['id']) }}" onclick="return confirm('¿Está seguro de la eliminación?')">[Eliminar]</a>
+      </li>
+    </ul>
     <hr>
-    {% endfor%}
+    {% endfor %}
   </body>
 </html>

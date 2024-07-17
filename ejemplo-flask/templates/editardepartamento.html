@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Departamento</title>
+</head>
+<body>
+    <h1>Editar Departamento</h1>
+    <form method="post">
+        <label for="nombre">Nombre:</label><br>
+        <input type="text" id="nombre" name="nombre" value="{{ departamento.nombre_completo_propietario }}" required><br><br>
+        
+        <label for="costo">Costo del departamento:</label><br>
+        <input type="number" id="costo" name="costo" step="0.01" value="{{ departamento.costo_departamento }}" required><br><br>
+        
+        <label for="numero">Número de cuartos:</label><br>
+        <input type="number" id="numero" name="numero" value="{{ departamento.numero_cuartos }}" required><br><br>
+
+        <label for="edificio">Edificio:</label><br>
+        <select id="edificio" name="edificio" required>
+            {% for edificio in edificios %}
+                {% if edificio.url == departamento.edificio %}
+                    <option value="{{ edificio.url }}" selected>{{ edificio.nombre }}</option>
+                {% else %}
+                    <option value="{{ edificio.url }}">{{ edificio.nombre }}</option>
+                {% endif %}
+            {% endfor %}
+        </select><br><br>
+        
+        <br><br>
+        <input type="submit" value="Editar Departamento">
+    </form>
+    <br>
+    <a href="{{ url_for('los_departamentos') }}">Regresar</a>
+</body>
+</html>
